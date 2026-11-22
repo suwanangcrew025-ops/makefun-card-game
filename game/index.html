@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ember Duel — Duel Kartu Pusaka</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- Title screen: the game's front door. -->
+  <section id="title-screen" class="screen">
+    <div class="title-wrap">
+      <div class="title-ember">✦</div>
+      <h1>EMBER DUEL</h1>
+      <p class="tagline">Duel Kartu Pusaka di Kepulauan Ember</p>
+      <p class="intro">
+        Dua penjaga, satu meja, dua belas kartu pusaka. Turunkan makhlukmu,
+        jaga heromu dengan Perisai, dan padamkan nyawa lawan sebelum
+        nyawamu yang padam.
+      </p>
+      <button id="play-button" class="big-button">▶ Mulai Duel</button>
+      <div class="howto">
+        <div><b>1 · Mana</b><span>Setiap giliran kristalmu bertambah. Kartu butuh mana untuk dimainkan.</span></div>
+        <div><b>2 · Makhluk</b><span>Makhluk menyerang sekali tiap giliran. Yang baru turun harus menunggu satu giliran — kecuali yang ber-Serbu.</span></div>
+        <div><b>3 · Menang</b><span>Kurangi nyawa lawan dari 30 menjadi 0. Makhluk Perisai harus diserang lebih dulu.</span></div>
+      </div>
+      <p class="foot">Klik kartu untuk memainkannya · Klik makhlukmu lalu klik target untuk menyerang · Spasi mengakhiri giliran · M mematikan suara</p>
+    </div>
+  </section>
+
+  <!-- The table: opponent on top, player at the bottom, log on the side. -->
+  <section id="table-screen" class="screen hidden">
+    <div class="table-grid">
+      <div class="board-col">
+        <div class="side-row enemy-side">
+          <div id="enemy-hero" class="hero-slot"></div>
+          <div id="enemy-mana" class="mana-slot"></div>
+          <div id="enemy-deck" class="deck-slot"></div>
+        </div>
+        <div id="enemy-hand" class="hand-row enemy-hand"></div>
+        <div id="enemy-board" class="board-row"></div>
+        <div class="center-bar">
+          <span id="turn-banner">Giliran 1 — giliranmu</span>
+          <button id="end-turn" data-action="end-turn" class="end-button">Akhiri Giliran (Spasi)</button>
+          <button id="mute-button" class="mute-button">🔊 Suara: Hidup</button>
+        </div>
+        <div id="player-board" class="board-row"></div>
+        <div id="player-hand" class="hand-row"></div>
+        <div class="side-row player-side">
+          <div id="player-hero" class="hero-slot"></div>
+          <div id="player-mana" class="mana-slot"></div>
+          <div id="player-deck" class="deck-slot"></div>
+        </div>
+      </div>
+      <aside class="log-col">
+        <h2>Catatan Duel</h2>
+        <ul id="game-log"></ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- End screen: win or loss, with the duel's numbers. -->
+  <section id="end-screen" class="screen hidden">
+    <div class="end-wrap">
+      <h1 id="end-title">KEMENANGAN!</h1>
+      <p id="end-subtitle"></p>
+      <div id="end-stats" class="end-stats"></div>
+      <button id="play-again-button" class="big-button">↻ Duel Lagi</button>
+    </div>
+  </section>
+
+  <div id="fx-layer"></div>
+  <div id="flash-banner"></div>
+</div>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
